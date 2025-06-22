@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "703447d9-f4d6-4844-9c9a-126e48657192",
+		"name": "OpenWeather Test",
+		"description": "This is a test of OpenWeather API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34697454",
+		"_collection_link": "https://apd000-0284.postman.co/workspace/OpenWeatherPostmanAPITesting~515227f8-febb-4e96-b174-bb19dfbc0f1f/collection/34697454-703447d9-f4d6-4844-9c9a-126e48657192?action=share&source=collection_link&creator=34697454"
+	},
+	"item": [
+		{
+			"name": "Get Weather - city and state",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"pm.test(\"city is los angeles\", function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Los Angeles\");\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}data/2.5/weather?q=Los Angeles,California&appid={{appid}}",
+					"host": [
+						"{{base_url}}data"
+					],
+					"path": [
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Los Angeles,California"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Weather - city and state",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}data/2.5/weather?q=Los Angeles,California&appid={{appid}}",
+							"host": [
+								"{{base_url}}data"
+							],
+							"path": [
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Los Angeles,California"
+								},
+								{
+									"key": "appid",
+									"value": "{{appid}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "openresty"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Jun 2025 07:40:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "508"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Cache-Key",
+							"value": "/data/2.5/weather?q=los%20angeles,california"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"coord\": {\n        \"lon\": -118.2437,\n        \"lat\": 34.0522\n    },\n    \"weather\": [\n        {\n            \"id\": 802,\n            \"main\": \"Clouds\",\n            \"description\": \"scattered clouds\",\n            \"icon\": \"03n\"\n        }\n    ],\n    \"base\": \"stations\",\n    \"main\": {\n        \"temp\": 290.6,\n        \"feels_like\": 290.41,\n        \"temp_min\": 290.6,\n        \"temp_max\": 290.6,\n        \"pressure\": 1013,\n        \"humidity\": 77,\n        \"sea_level\": 1013,\n        \"grnd_level\": 994\n    },\n    \"visibility\": 10000,\n    \"wind\": {\n        \"speed\": 1.85,\n        \"deg\": 200,\n        \"gust\": 2.1\n    },\n    \"clouds\": {\n        \"all\": 42\n    },\n    \"dt\": 1748849815,\n    \"sys\": {\n        \"country\": \"US\",\n        \"sunrise\": 1748868148,\n        \"sunset\": 1748919596\n    },\n    \"timezone\": -25200,\n    \"id\": 5368361,\n    \"name\": \"Los Angeles\",\n    \"cod\": 200\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Weather - City, State, Country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"pm.test(\"city is los angeles\", function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.sys.country).to.eql(\"US\");\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}data/2.5/weather?q=Los Angeles,California,US&appid={{appid}}",
+					"host": [
+						"{{base_url}}data"
+					],
+					"path": [
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Los Angeles,California,US"
+						},
+						{
+							"key": "appid",
+							"value": "{{appid}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}data/2.5/weather?q=Los Angeles,California,US&appid={{appid}}",
+							"host": [
+								"{{base_url}}data"
+							],
+							"path": [
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Los Angeles,California,US"
+								},
+								{
+									"key": "appid",
+									"value": "{{appid}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "openresty"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Jun 2025 07:50:29 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "511"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Cache-Key",
+							"value": "/data/2.5/weather?q=los%20angeles,california,us"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"coord\": {\n        \"lon\": -118.2445,\n        \"lat\": 34.0549\n    },\n    \"weather\": [\n        {\n            \"id\": 802,\n            \"main\": \"Clouds\",\n            \"description\": \"scattered clouds\",\n            \"icon\": \"03n\"\n        }\n    ],\n    \"base\": \"stations\",\n    \"main\": {\n        \"temp\": 290.51,\n        \"feels_like\": 290.34,\n        \"temp_min\": 290.51,\n        \"temp_max\": 290.51,\n        \"pressure\": 1013,\n        \"humidity\": 78,\n        \"sea_level\": 1013,\n        \"grnd_level\": 994\n    },\n    \"visibility\": 10000,\n    \"wind\": {\n        \"speed\": 1.85,\n        \"deg\": 200,\n        \"gust\": 2.1\n    },\n    \"clouds\": {\n        \"all\": 42\n    },\n    \"dt\": 1748850629,\n    \"sys\": {\n        \"country\": \"US\",\n        \"sunrise\": 1748868148,\n        \"sunset\": 1748919596\n    },\n    \"timezone\": -25200,\n    \"id\": 5368361,\n    \"name\": \"Los Angeles\",\n    \"cod\": 200\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}data/2.5/weather?q=Los Angeles,California,US&appid={{appid}}",
+							"host": [
+								"{{base_url}}data"
+							],
+							"path": [
+								"2.5",
+								"weather"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Los Angeles,California,US"
+								},
+								{
+									"key": "appid",
+									"value": "{{appid}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "openresty"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 02 Jun 2025 07:52:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "511"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Cache-Key",
+							"value": "/data/2.5/weather?q=los%20angeles,california,us"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"coord\": {\n        \"lon\": -118.2445,\n        \"lat\": 34.0549\n    },\n    \"weather\": [\n        {\n            \"id\": 802,\n            \"main\": \"Clouds\",\n            \"description\": \"scattered clouds\",\n            \"icon\": \"03n\"\n        }\n    ],\n    \"base\": \"stations\",\n    \"main\": {\n        \"temp\": 290.51,\n        \"feels_like\": 290.34,\n        \"temp_min\": 290.51,\n        \"temp_max\": 290.51,\n        \"pressure\": 1013,\n        \"humidity\": 78,\n        \"sea_level\": 1013,\n        \"grnd_level\": 994\n    },\n    \"visibility\": 10000,\n    \"wind\": {\n        \"speed\": 1.85,\n        \"deg\": 200,\n        \"gust\": 2.1\n    },\n    \"clouds\": {\n        \"all\": 42\n    },\n    \"dt\": 1748850629,\n    \"sys\": {\n        \"country\": \"US\",\n        \"sunrise\": 1748868148,\n        \"sunset\": 1748919596\n    },\n    \"timezone\": -25200,\n    \"id\": 5368361,\n    \"name\": \"Los Angeles\",\n    \"cod\": 200\n}"
+				}
+			]
+		}
+	]
+}
